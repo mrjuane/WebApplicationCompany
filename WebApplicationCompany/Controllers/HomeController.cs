@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using DLCompany.Helpper;
+using DLCompany.Model;
+
 
 namespace WebApplicationCompany.Controllers
 {
@@ -14,5 +19,6 @@ namespace WebApplicationCompany.Controllers
 
             return View();
         }
+               
     }
 }
