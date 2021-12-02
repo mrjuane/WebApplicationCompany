@@ -18,7 +18,7 @@ namespace WebApplicationCompany.Controllers
         // GET api/<controller>
         [HttpGet,  ResponseType(typeof(DLCompany.Model.CompanyHeader))]
         public async Task<IHttpActionResult> Get()
-        {
+        {  
             List<DLCompany.Model.CompanyHeader> dato = await Task.Run(() => controller.GetEntities().Select(c => new DLCompany.Model.CompanyHeader { Id = c.Id, Code = c.Code, Description = c.Description, EmployeeCount = c.EmployeeCount }).ToList());
 
             if (dato == null)

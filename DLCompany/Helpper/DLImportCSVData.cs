@@ -16,13 +16,20 @@ namespace DLCompany.Helpper
         //Read CSV file from the path
         public async Task ConvertExcelAndInsertToDb(string filePath)
         {
-            using (var reader = new StreamReader(filePath, Encoding.UTF8))
+            try
             {
-                CsvReader csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture);
+                using (var reader = new StreamReader(filePath, Encoding.UTF8))
+                {
+                    CsvReader csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture);
 
-                var listFromcvs = await Task.Run(() => csvReader.GetRecords<CSVDataContract>().ToList());
+                    var listFromcvs = await Task.Run(() => csvReader.GetRecords<CSVDataContract>().ToList());
 
-                var result = await InsertDataToDB(listFromcvs);
+                    var result = await InsertDataToDB(listFromcvs);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
